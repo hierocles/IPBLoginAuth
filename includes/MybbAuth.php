@@ -21,6 +21,7 @@
 */
 
 namespace MybbLoginAuth;
+
 use User;
 
 class MybbAuth
@@ -36,7 +37,8 @@ class MybbAuth
     public static function getConfig()
     {
         if (self::$config === null) {
-            self::$config = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()->makeConfig('mybbloginauth');
+            self::$config = \MediaWiki\MediaWikiServices::getInstance()
+                ->getConfigFactory()->makeConfig('mybbloginauth');
         }
         return self::$config;
     }
@@ -177,7 +179,8 @@ class MybbAuth
             }
 
             // Update user
-            $stmt = $sql->prepare("SELECT usergroup, additionalgroups, email, {$name_field} FROM {$prefix}users WHERE lower(username) = lower(?)");
+            $stmt = $sql->prepare("SELECT usergroup, additionalgroups, email, {$name_field} FROM {$prefix}users
+                WHERE lower(username) = lower(?)");
             if ($stmt) {
                 try {
                     $stmt->bind_param('s', $username);
@@ -236,7 +239,8 @@ class MybbAuth
 
             // Check underscores
             $us_username = str_replace(" ", "_", $username);
-            $stmt = $sql->prepare("SELECT email FROM {$prefix}users WHERE lower(username) = lower(?) OR lower(username) = lower(?)");
+            $stmt = $sql->prepare("SELECT email FROM {$prefix}users
+                WHERE lower(username) = lower(?) OR lower(username) = lower(?)");
             if ($stmt) {
                 try {
                     $stmt->bind_param('ss', $username, $us_username);
