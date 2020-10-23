@@ -1,0 +1,45 @@
+{
+    "name": "MyBB Login Auth",
+    "version": "1.0.0",
+    "author": "Dylan Henrich",
+    "url": "https://www.github.com/hierocles",
+    "descriptionmsg": "mybbloginauth-desc",
+    "license-name": "GPLv3",
+    "type": "auth",
+    "requires": {
+        "MediaWiki": ">= 1.27.0"
+    },
+    "manifest_version": 2,
+    "ConfigRegistry": {
+        "mybbloginauth": "GlobalVarConfig::newInstance"
+    },
+    "MessagesDirs": {
+        "MybbLoginAuth": [
+            "i18n"
+        ]
+    },
+    "AutoloadClasses": {
+        "MybbLoginAuth\\Auth\\MybbAuthenticationProvider": "includes/auth/MybbAuthenticationProvider.php",
+        "MybbLoginAuth\\Auth\\MybbAuthenticationRequest": "includes/auth/MybbAuthenticationRequest.php",
+        "MybbLoginAuth\\MybbAuth": "includes/MybbAuth.php"
+    },
+    "AuthManagerAutoConfig": {
+        "primaryauth": {
+            "MybbLoginAuth\\Auth\\MybbAuthenticationProvider": {
+                "class": "MybbLoginAuth\\Auth\\MybbAuthenticationProvider",
+                "sort": 0
+            }
+        }
+    },
+    "config": {
+        "MybbDBHost": "",
+        "MybbDBUsername": "",
+        "MybbDBPassword": "",
+        "MybbDBDatabase": "",
+        "MybbDBPrefix": "",
+        "MybbGroupValidating": 5,
+        "MybbGroupMap": {
+            "sysop": 4
+        }
+    }
+}
