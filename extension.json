@@ -2,7 +2,7 @@
     "name": "MyBB Login Auth",
     "version": "1.0.0",
     "author": "Dylan Henrich",
-    "url": "https://www.github.com/hierocles",
+    "url": "https://www.github.com/hierocles/MybbLoginAuth",
     "descriptionmsg": "mybbloginauth-desc",
     "license-name": "GPLv3",
     "type": "auth",

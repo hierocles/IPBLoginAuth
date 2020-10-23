@@ -7,7 +7,7 @@
 	"ipbloginauth-desc": "Provides an authentication mechanism to log in using MyBB forum accounts",
 	"unexpected-error": "An unexpected error occurred.",
 	"db-access-error": "Unable to access the specified database.",
-	"no-user-error": "No user found matching the given credentials.",
+	"no-user-error": "Username or password is invalid.",
 	"db-error": "Unknown database error.",
-	"no-local-pass-change": "Local password changes are not allowed."
+	"no-local-pass-change": "Local password changes are not allowed. Please change your password in MyBB."
 }
