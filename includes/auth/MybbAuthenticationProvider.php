@@ -78,8 +78,9 @@ class MybbAuthenticationProvider extends AbstractPrimaryAuthenticationProvider
             $password = $req->password;
             $prefix = $cfg->get('MybbDBPrefix');
 
-            // Check underscores
+            // Check underscores -- does MyBB convert spaces to _?
             $us_username = str_replace(" ", "_", $username);
+            // Remote lower()
             $stmt = $sql->prepare("SELECT email FROM {$prefix}users WHERE username = ?");
             if ($stmt) {
                 try {
@@ -99,7 +100,7 @@ class MybbAuthenticationProvider extends AbstractPrimaryAuthenticationProvider
             }
 
             // Check user
-            $stmt = $sql->prepare("SELECT username, password, salt FROM {$prefix}users WHERE (lower(username) = lower(?) OR lower(email) = lower(?))");
+            $stmt = $sql->prepare("SELECT username, password, salt FROM {$prefix}users WHERE (username = ? OR email = ?)");
             if ($stmt) {
                 try {
                     $stmt->bind_param('ss', $username, $username);

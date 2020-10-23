@@ -257,15 +257,15 @@ class MybbAuth
     /**
      * Verifies if a supplied password matches the password hash in the MyBB database.
      *
-     * @param $password - based on user input
-     * @param $mybbpassword - md5 hash in MyBB database
-     * @param $salt - from MyBB database
+     * @param $password string Password supplied by user
+     * @param $mybbpassword string Hash supplied by MyBB database
+     * @param $salt strong Salt string supplied by MyBB database
      * @return bool
      */
     public static function checkMybbPassword($password, $mybbpassword, $salt)
     {
+        // This is how MyBB generates hashed passwords
         $hash = md5(md5($salt) . md5($password));
-        $compare = md5(md5($salt) . $mybbpassword);
-        return $hash == $compare;
+        return $hash == $mybbpassword;
     }
 }
