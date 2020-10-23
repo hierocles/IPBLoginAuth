@@ -264,8 +264,8 @@ class MybbAuth
      */
     public static function checkMybbPassword($password, $mybbpassword, $salt)
     {
-        $hash = md5(md5($salt).md5($password));
-        $compare = md5(md5($salt).$mybbpassword);
+        $hash = md5(md5($salt) . md5($password));
+        $compare = md5(md5($salt) . $mybbpassword);
         return $hash == $compare;
     }
 }

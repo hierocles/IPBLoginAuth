@@ -32,14 +32,35 @@
         }
     },
     "config": {
-        "MybbDBHost": "",
-        "MybbDBUsername": "",
-        "MybbDBPassword": "",
-        "MybbDBDatabase": "",
-        "MybbDBPrefix": "",
-        "MybbGroupValidating": 5,
+        "MybbDBHost": {
+            "description": "Database host",
+            "value": ""
+        },
+        "MybbDBUsername": {
+            "description": "Database username",
+            "value": ""
+        },
+        "MybbDBPassword": {
+            "description": "Database password",
+            "value": ""
+        },
+        "MybbDBDatabase": {
+            "description": "Database name",
+            "value": ""
+        },
+        "MybbDBPrefix": {
+            "description": "Database table prefix",
+            "value": ""
+        },
+        "MybbGroupValidating": {
+            "description": "Awaiting Validation usergroup",
+            "value": 5
+        },
         "MybbGroupMap": {
-            "sysop": 4
+            "description": "Mapping of wiki roles to MyBB usergoups",
+            "value": {
+                "sysop": 4
+            }
         }
     }
 }

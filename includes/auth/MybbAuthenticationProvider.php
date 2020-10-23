@@ -80,7 +80,7 @@ class MybbAuthenticationProvider extends AbstractPrimaryAuthenticationProvider
 
             // Check underscores
             $us_username = str_replace(" ", "_", $username);
-            $stmt = $sql->prepare("SELECT email FROM {$prefix}users WHERE lower(username) = lower(?)");
+            $stmt = $sql->prepare("SELECT email FROM {$prefix}users WHERE username = ?");
             if ($stmt) {
                 try {
                     $stmt->bind_param('s', $us_username);
