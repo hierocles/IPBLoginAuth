@@ -57,9 +57,9 @@
             "value": 5
         },
         "MybbGroupMap": {
-            "description": "Mapping of wiki roles to MyBB usergoups",
+            "description": "Mapping of wiki roles to MyBB usergoups. Default Super Moderators (3) and Adminstrators (4)",
             "value": {
-                "sysop": 4
+                "sysop": [3, 4]
             }
         }
     }
