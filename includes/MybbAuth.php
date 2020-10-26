@@ -44,7 +44,7 @@ class MybbAuth
     }
 
     /**
-     * Creates and returns a new mysqli object to access the IPB forum database.
+     * Creates and returns a new mysqli object to access the MyBB forum database.
      *
      * @return \mysqli
      */
@@ -61,7 +61,7 @@ class MybbAuth
 
     /**
      * Clean up a value (username or password) before using it to query the forum database. A similar function is used
-     * in the IPB software to access the database.
+     * in the MyBB software to access the database.
      *
      * @param $value
      * @return string
