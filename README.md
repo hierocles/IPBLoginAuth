@@ -46,13 +46,26 @@ You can also add additional group associations as needed in `extensions.json`:
 ## Account recovery link
 This extension does not support account recovery from within MediaWiki. As such, it is highly recommended to disable internal account recovery by adding the following to your `LocalSettings.php`:
 
-    $wgPasswordResetRoutes = array( 'username' => false, 'email' => false );
+    $wgPasswordResetRoutes = ['username' => false, 'email' => false];
 
 ## Account creation
-The way this extension overrides the MediaWiki authentication, you will not be able to validate local MediaWiki accounts that do not have a corresponding MyBB account. As such, you should disable account creation by adding the following to your `LocalSettings.php`:
+The way this extension overrides the MediaWiki authentication, you will not be able to validate local MediaWiki accounts that do not have a corresponding MyBB account. As such, you should disable account creation, but leave auto account creation enabled, by adding the following to your `LocalSettings.php`:
 
     $wgGroupPermissions['*']['createaccount'] = false;
-    $wgGroupPermissions['sysop']['createaccount'] = false;
+    $wgGroupPermissions['*']['autocreateaccount'] = true;
+
+You can further disable the Special:CreateAccount page and disable the link from appearing by adding the following to your `LocalSettings.php`. While this isn't a necessity, as long as account creation is disabled as above, it does remove an unnecessary page that make confuse users.
+
+    $wgHooks['SpecialPage_initList'][] = function ( &$list ) {
+            unset( $list['CreateAccount'] );
+            return true;
+    };
+    function NoCreateAccountOnMainPage( &$personal_urls ){
+        unset( $personal_urls['createaccount'] );
+        return true;
+    }
+    $wgHooks['PersonalUrls'][]='NoCreateAccountOnMainPage';
+
 
 # License
 This extension is licensed under the included GPLv3 license.
