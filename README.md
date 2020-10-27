@@ -17,6 +17,7 @@ MybbLoginAuth is based on [IPBLoginAuth](https://www.github.com/FHannes/IPBLogin
 # Installation
 
 * Download the extension or use Git to download the extension to your `/extensions` directory.
+    * If using Git to update this extension to the latest version, back up your `extensions.json` file as `git pull` will overwrite it. Alternatively, you can use `git update-index --skip-worktree extensions.json` which will tell Git to not update the file durings pulls, and then manually update the file with any changes.
 * Edit database settings in `extension.json` with your MyBB database information.
 * Add the following code at the bottom of your `LocalSettings.php`:
 
@@ -54,7 +55,7 @@ The way this extension overrides the MediaWiki authentication, you will not be a
     $wgGroupPermissions['*']['createaccount'] = false;
     $wgGroupPermissions['*']['autocreateaccount'] = true;
 
-You can further disable the Special:CreateAccount page and disable the link from appearing by adding the following to your `LocalSettings.php`. While this isn't a necessity, as long as account creation is disabled as above, it does remove an unnecessary page that make confuse users.
+You can further disable the Special:CreateAccount page and disable the link from appearing by adding the following to your `LocalSettings.php`. While this isn't a necessity, as long as account creation is disabled as above, it does remove an unnecessary page that may confuse users.
 
     $wgHooks['SpecialPage_initList'][] = function ( &$list ) {
             unset( $list['CreateAccount'] );
